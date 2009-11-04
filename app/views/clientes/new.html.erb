@@ -1,0 +1,39 @@
+<h1>Novo cliente</h1>
+
+<div id="novos_campos">
+  <% form_for(@cliente) do |f| %>
+   <p>
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </p>
+  <p>
+    <%= f.label :endereco %><br>
+    <%= f.text_field :endereco %>
+  </p>
+  <p>
+    <%= f.label :cpf %><br>
+    <%= f.text_field :cpf %>
+  </p>
+  <p>
+    <%= f.label :rg %><br>
+    <%= f.text_field :rg %>
+  </p>
+  <p>
+    <%= f.label :telefone %><br>
+    <%= f.text_field :telefone %>
+  </p>
+  <p>
+    <%= f.label :End,"Endereço de Entrega" %><br>
+    <%= f.text_field :end_cobranca %>
+  </p>
+  <p>
+     <%= f.label :EMAIL %><br>
+     <%= f.text_field :email %>
+  </p>
+
+  <br>
+      <%= f.submit "Criar" %>
+    
+  <% end %>
+  <%= link_to 'Voltar', clientes_path %><br><br>
+</div>

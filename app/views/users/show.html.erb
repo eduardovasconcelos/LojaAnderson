@@ -1,0 +1,26 @@
+<% if flash[:notice] %>
+  <p style="color: red; font-style: italic"><%= flash[:notice] %></p>
+<% end %>
+<p>
+  <b>Nome:</b>
+  <%=h @user.nome %>
+</p>
+
+<p>
+  <b>Login:</b>
+  <%=h @user.login %>
+</p>
+
+<p>
+  <b>Password:</b>
+</p>
+
+<p>
+  <b>Administrador:</b>
+  <%=h @user.admin? %>
+</p>
+
+<p>
+    <%= link_to 'Editar', edit_user_path(@user) %> |
+    <%= link_to 'Voltar', users_path %>
+</p>

@@ -1,0 +1,26 @@
+<p id="tabelas">
+  <table border="1" cellpadding="5" cellspacing="1">
+    <tr>
+      <th align="center">Numero Pedido</th>
+      <th align="center">Cliente</th>
+      <th align="center">Data pedido</th>
+      <th align="center">Data entrega</th>
+      <th align="center">Acoes</th>
+    </tr>
+</p>
+    <% for pedido in @pedidos %>
+      <tr>
+        <td align="center"><%=h pedido.id %></td>
+        <td align="center"><%=h pedido.cliente ? pedido.cliente.nome : "&nbsp;" %></td>
+        <td align="center"><%=h pedido.data_pedido.strftime("%d/%m/%Y") %></td>
+        <td align="center"><%=h pedido.data_entrega.strftime("%d/%m/%Y") %></td>
+        <td>
+
+        <%= link_to 'Listar', pedido %>
+        <% if session_user.admin? %>
+          <%= link_to 'Editar', edit_pedido_path(pedido) %>
+          <%= link_to 'Deletar', pedido, :confirm => 'Voce tem certeza?', :method => :delete %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>

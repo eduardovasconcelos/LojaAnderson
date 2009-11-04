@@ -1,0 +1,25 @@
+<h1>Login</h1>
+
+<% if flash[:notice] %>
+<p style="color: red; font-style: italic"><%= flash[:notice] %></p>
+<% end %>
+
+<p>Por favor entre com o seu login e senha para autenticacao</p>
+
+<div id="tabelas">
+      <%= form_tag :action => "login"%>
+
+      
+      <p>
+              <label for="login">Login:</label><br>
+              <%= text_field_tag "login", params[:login], :maxlenght => 10 %>
+      </p>
+
+      <p>
+              <label for="password">Senha:</label><br>
+              <%= password_field_tag "password", "", :maxlenght => 10 %>
+      </p>
+              <%= submit_tag "Entrar" %>
+      
+      <%= form_tag %>
+</div>

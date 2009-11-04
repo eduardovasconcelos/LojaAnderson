@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  cliente: 
+  data_pedido: 2009-01-26
+  data_entrega: 2009-01-26
+  valor_total: 1.5
+
+two:
+  cliente: 
+  data_pedido: 2009-01-26
+  data_entrega: 2009-01-26
+  valor_total: 1.5

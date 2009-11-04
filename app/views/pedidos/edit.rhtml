@@ -1,0 +1,15 @@
+<% if session_user.admin? %>
+    <h1>Editando pedido</h1>
+    <div id="tabelas">
+        <% form_for :pedido, :url => pedido_path(@pedido), :html => {:method => 'put'} do |f| %>
+        <%= f.error_messages %>
+          <%= render :partial => "campos", :locals => {:f => f} %>
+          <br><br><%= submit_tag "Update" %>
+        <% end %>
+
+        <%= link_to 'Mostrar', @pedido %> |
+        <%= link_to 'Voltar', pedidos_path %><br><br>
+    </div>
+<% else %>
+    <%= render :partial => "shared/access_denied" %>
+<% end %>

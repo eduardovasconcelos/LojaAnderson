@@ -1,0 +1,30 @@
+<% if session_user.admin? %>
+    <h1>Contabilidade</h1>
+    <div id="tabelas">
+
+
+        <% form_for(@contabilidade) do |f| %>
+          <%= f.error_messages %>
+
+          <p>
+            <%= f.label :descricao %><br />
+            <%= f.text_field :descricao %>
+          </p>
+          <p>
+            <%= f.label :tipo %><br />
+            <%= f.select :tipo, [["Débito", "Débito"], ["Crédito", "Crédito"]]  %>
+          </p>
+          <p>
+            <%= f.label :valor %><br />
+            <%= f.text_field :valor %>
+          </p>
+         
+            <%= f.submit 'Criar' %>
+         
+        <% end %>
+
+        <%= link_to 'Voltar', contabilidades_path %><br><br>
+    </div>
+<% else %>
+    <%=  render :partial => "shared/access_denied" %>
+<% end %>

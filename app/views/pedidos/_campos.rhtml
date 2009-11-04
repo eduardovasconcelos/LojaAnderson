@@ -1,0 +1,20 @@
+
+  <p>
+    <%= f.label "Cliente" %><br>
+    <%= text_field_with_auto_complete :cliente, :nome %>
+  </p>
+
+  <p>
+    <%= f.label :data_pedido %><br>
+    <%= f.date_select :data_pedido, :order=> [:day, :month, :year] %>
+  </p>
+
+  <p>
+    <%= f.label :data_entrega %><br>
+    <%= f.date_select :data_entrega, :order=> [:day, :month, :year] %>
+  </p>
+  <br>
+  <div id="items">
+    <%= render :partial => "item", :collection => @pedido.itempedidos %>
+  </div>
+  <br><%= novo_item_link "Novo Item" %>

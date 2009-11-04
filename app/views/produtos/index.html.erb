@@ -1,0 +1,35 @@
+<h1>PRODUTOS</h1>
+<div id="tabelas">
+    
+    <table border="1" cellpadding="5" cellspacing="1">
+      <tr>
+        <th>Codigo</th>
+        <th>Nome</th>
+        <th>Valor</th>
+        <th>Estoque</th>
+        <th>Acoes</th>
+      </tr>
+
+      <% for produto in @produtos %>
+        <tr>
+          <td align="center"><%=h produto.id %></td>
+          <td><%=h produto.nome %></td>
+          <td align="center"><%=h produto.valor %></td>
+          <td align="center"><%=h produto.estoque %></td>
+          <% if session_user.admin? %>
+            <td><%= link_to 'Editar', edit_produto_path(produto) %>
+            <%= link_to 'Delete', produto, :confirm => 'Voce tem certeza?', :method => :delete %>
+           <%= link_to "Relatorio de Vendas", produto_path(produto, :format => 'pdf') %></td>
+           <% else %>
+            <td>Sem autorização</td>
+           <% end %>
+        </tr>
+      <% end %>
+      </table>
+</div>
+    <br />
+    <% if session_user.admin?  %>
+        <p id= "menu_new">
+          <%= link_to image_tag("novo_produto_b1.gif"), new_produto_path %>
+        </p>
+    <% end %>

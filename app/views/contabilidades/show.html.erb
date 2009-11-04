@@ -1,0 +1,22 @@
+<% if flash[:notice] %>
+  <p style="color: red; font-style: italic"><%= flash[:notice] %></p>
+<% end %>
+<p>
+  <b>Descricao:</b>
+  <%=h @contabilidade.descricao %>
+</p>
+
+<p>
+  <b>Tipo:</b>
+  <%=h @contabilidade.tipo %>
+</p>
+
+<p>
+  <b>Valor:</b>
+  <%=h @contabilidade.valor %>
+</p>
+
+<p>
+<%= link_to 'Editar', edit_contabilidade_path(@contabilidade) %> |
+<%= link_to 'Voltar', contabilidades_path %><br><br>
+</p>

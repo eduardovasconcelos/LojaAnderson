@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  produto: 
+  pedido: 
+  quantidade: 1
+
+two:
+  produto: 
+  pedido: 
+  quantidade: 1

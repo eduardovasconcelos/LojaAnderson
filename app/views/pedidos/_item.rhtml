@@ -1,0 +1,16 @@
+<div class="item">
+ <% fields_for "pedido[item_attributes][]", item do |f| %>
+      <%= f.error_messages %>
+      <p>
+        <span>Item: <%= text_field_with_auto_complete :itempedido, :produto_nome, {:size=>40},{:url => formatted_produtos_path(:js), :method => :get, :with => "'search=' + element.value"} %>
+        Quantidade: <%= f.text_field :quantidade, :index => nil %></span>
+        <% if item.new_record? %>
+          <%= link_to_function "Apagar", "$(this).up('.item').remove()" %>
+        <% else %>
+        <%= link_to_function "Apagar", "mark_for_destroy(this)" %>
+          <%= f.hidden_field :id, :index => nil %>
+          <%= f.hidden_field :should_destroy, :index => nil, :class => 'should_destroy' %>
+        <%end%>
+      </p>
+ <% end %>
+</div>

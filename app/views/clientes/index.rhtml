@@ -1,0 +1,13 @@
+<div class="content">
+    <h1>CLIENTES</h1><br>
+      <div id="search">
+        NUMERO DO ID DO CLIENTE<%= search(url_for(:controller => "clientes", :action => "search")) %>
+      </div>
+
+      <p id="clientes">
+        <%= render :partial => "campos" %> <br>
+      </p>
+      <p id= "menu_new">
+          <%= link_to image_tag("novo_cliente_b1.gif"), new_cliente_path %>
+      </p>
+ </div>

@@ -1,0 +1,21 @@
+<% if flash[:notice] %>
+  <p style="color: red; font-style: italic"><%= flash[:notice] %></p>
+<% end %>
+  <div id="tabelas">
+      <p>
+        <b>Nome:</b>
+        <%=h @produto.nome %>
+      </p>
+
+      <p>
+        <b>Valor:</b>
+        <%=h @produto.valor %>
+      </p>
+      <p>
+        <b>Quantidade em Estoque:</b>
+        <%=h @produto.estoque %>
+      </p>
+       <%= link_to "Relatorio do Produto", produto_path(@produto, :format => 'pdf') %> |</td>
+      <%= link_to 'Editar', edit_produto_path(@produto) %> |
+      <%= link_to 'Voltar', produtos_path %><br><br>
+  </div>

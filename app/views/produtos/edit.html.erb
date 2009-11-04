@@ -1,0 +1,27 @@
+<% if session_user.admin? %>
+    <h1>Editando Produto</h1>
+    <div id="tabelas">
+        <% form_for(@produto) do |f| %>
+          <%= f.error_messages %>
+
+
+            <%= f.label :nome %><br>
+            <%= f.text_field :nome %>
+          <p>
+            <%= f.label :valor %><br />
+            <%= f.text_field :valor %>
+          </p>
+           <p>
+            <%= f.label :quantidade_em_estoque %><br />
+            <%= f.text_field :estoque %>
+          </p>
+          <%= f.submit "Atualizar" %>
+
+        <% end %>
+
+        <%= link_to 'Mostrar', @produto %> |
+        <%= link_to 'Voltar', produtos_path %><br><br>
+    </div>
+<% else %>
+    <%=  render :partial => "shared/access_denied" %>
+<% end %>

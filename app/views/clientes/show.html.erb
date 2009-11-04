@@ -1,0 +1,34 @@
+<% if flash[:notice] %>
+  <p style="color: red; font-style: italic"><%= flash[:notice] %></p>
+<% end %>
+<p>
+  <b>Nome:</b>
+  <%=h @cliente.nome %>
+</p>
+
+<p>
+  <b>Endereco:</b>
+  <%=h @cliente.endereco %>
+</p>
+
+<p>
+  <b>CPF:</b>
+  <%=h @cliente.cpf %>
+</p>
+
+<p>
+  <b>RG:</b>
+  <%=h @cliente.rg %>
+</p>
+
+<p>
+  <b>Telefone:</b>
+  <%=h @cliente.telefone %>
+</p>
+<p>
+  <b>EMAIL:</b>
+  <%=h @cliente.email %>
+</p>
+<p>
+<%= link_to 'Editar', edit_cliente_path(@cliente) %> |
+<%= link_to 'Voltar', clientes_path %>

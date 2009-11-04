@@ -1,0 +1,38 @@
+<% if flash[:notice] %>
+  <p style="color: red; font-style: italic"><%= flash[:notice] %></p>
+<% end %>
+<% if session_user.admin?  %>
+  <div id="tabelas">
+    <h1>Listando Usuario</h1>
+
+    <table border="1" cellpadding="5" cellspacing="1">
+    <tr>
+      <th>Nome</th>
+      <th>Login</th>
+      <th>Password</th>
+      <th>Admin</th>
+      <th>Acoes</th>
+    </tr>
+
+    <% for user in @users %>
+    <tr>
+      <td align="center"><%=h user.nome %></td>
+      <td align="center"><%=h user.login %></td>
+      <td align="center"><%=h user.pass %></td>
+      <td align="center"><%=h user.admin? %></td>
+      <td><%= link_to 'Listar', user %>
+      <%= link_to 'Editar', edit_user_path(user) %>
+      <%= link_to 'Deletar', user, :confirm => 'Voce tem certeza?', :method => :delete %></td>
+    </tr>
+    <% end %>
+    </table>
+    <br />
+    </div>
+    <p id="menu_new">
+    <%= link_to image_tag("novo_usuario_b1.gif"), new_user_path %>
+    </p>
+<% else %>
+  <%= render :partial => "shared/access_denied" %>
+<%end%>
+
+

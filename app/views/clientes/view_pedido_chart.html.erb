@@ -1,0 +1,9 @@
+<%= javascript_include_tag "FusionCharts"%>
+
+<%
+# O xml é obtido como uma string do builder template.
+str_xml = render "clientes/pedido_data.builder"
+#Criar o Gráfico - Coluna 3D Chart com dados do strXML
+render_chart '/FusionCharts/Column3D.swf' , '' , str_xml , 'TimeChart' ,  650 ,  400 ,  false ,  false do -%>
+<%  end -%>
+<p id="tabelas"><%= link_to 'Voltar', clientes_path %><br></p>

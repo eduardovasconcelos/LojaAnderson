@@ -1,0 +1,30 @@
+<p id="tabelas">
+    <table border="1" cellpadding="5" cellspacing="1">
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Endereco</th>
+        <th>CPF</th>
+        <th>RG</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th>Acoes</th>
+      </tr>
+</p>
+    <% for cliente in @clientes %>
+      <tr>
+        <td align="center"><%=h cliente.id %></td>
+        <td align="center"><%=h cliente.nome %></td>
+        <td align="center"><%=h cliente.endereco %></td>
+        <td align="center"><%=h cliente.cpf %></td>
+        <td align="center"><%=h cliente.rg %></td>
+        <td align="center"><%=h cliente.telefone %></td>
+        <td><%=h cliente.email %></td>
+        <td>
+         <%= link_to "Incluir Pedido", :controller => "pedidos", :action => "new", :cliente_id => cliente.id %>
+         <%= link_to 'Editar', edit_cliente_path(cliente) %>
+         <%= link_to 'Apagar', cliente, :confirm => 'Voce tem certeza?', :method => :delete %>
+         <%= link_to 'Grafico', {:action=>'view_pedido_chart', :id => cliente.id} %></td>
+      </tr>
+    <% end %>
+    </table>
