@@ -1,5 +1,4 @@
 class Pedido < ActiveRecord::Base
-  
   #  Validaçoes
   validates_numericality_of :cliente_id, :only_integer => true, :greater_than => 0, :message => "-> O ID do cliente somente pode ser inteiro!"
 
@@ -52,6 +51,10 @@ class Pedido < ActiveRecord::Base
     self.valor_total = total
     self.update_attributes(:valor_total => self.valor_total)
     return self.valor_total
+  end
+
+  def adicionar_item(parameters)
+    self.itempedidos.create(parameters)
   end
 
 end

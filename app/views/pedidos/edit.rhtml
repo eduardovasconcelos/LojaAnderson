@@ -2,7 +2,7 @@
     <h1>Editando pedido</h1>
     <div id="tabelas">
         <% form_for :pedido, :url => pedido_path(@pedido), :html => {:method => 'put'} do |f| %>
-        <%= f.error_messages %>
+          <%= f.error_messages %>
           <%= render :partial => "campos", :locals => {:f => f} %>
           <br><br><%= submit_tag "Update" %>
         <% end %>

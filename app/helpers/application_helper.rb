@@ -12,16 +12,7 @@ include FusionChartsHelper
     })
   end
 
-  #Verifica se o produto exite no estoque
-  def produto_existe?(codigo)
-    prod = Produto.find(:all, :conditions => ["id = ?", codigo])
-    if prod.nil? or prod.empty?
-      false
-      redirect_to (clientes_url)
-    else
-      true
-    end
-  end
+ 
 
   #Action responsável pela soma dos pedidos no dia
   def dia

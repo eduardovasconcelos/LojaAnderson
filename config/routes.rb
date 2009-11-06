@@ -1,16 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.resources :contabilidades
-
-  map.resources :estoques
-
   map.resources :users
-
-  map.resources :itempedidos
-
   map.resources :produtos
-
   map.resources :pedidos
-
   map.resources :clientes
 
   # The priority is based upon order of creation: first created -> highest priority.

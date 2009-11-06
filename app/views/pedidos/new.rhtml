@@ -1,8 +1,11 @@
 <h1>Novo pedido</h1>
 <div id="tabelas">
     <% form_for :pedido, :url => pedidos_path do |f|%>
+      <%=render :partial => 'campos', :locals => {:f => f}%>
       <%= f.hidden_field :cliente_id %>
-       <%= f.hidden_field :user %>
+      <%= f.hidden_field :user %>
+
+      <%= hidden_field_tag :produto_id %>
       <p>
         <label for="data_do_pedido">Data do Pedido:</label><br />
         <%= f.date_select 'data_pedido', :order=> [:day, :month, :year] %>
@@ -11,13 +14,28 @@
         <label for="data_de_entrega">Data da Entrega:</label><br />
         <%= f.date_select 'data_entrega', :order=> [:day, :month, :year] %>
       </p>
-      
+
       <h2>Produtos</h2>
-      <div id="items">
-        <%= render :partial => "item", :collection => @pedido.itempedidos %>
-      </div>
-      <br><%= novo_item_link("Novo Item") %><br>
-      <br><%= f.submit "Cadastrar" %><br><br>
+      <p>
+        <%= label_tag "produto", "Produto" %>
+        <%= text_field_tag "produto"%>
+        <%= label_tag "quantidade", "Quantidade" %>
+        <%= text_field_tag "quantidade"%>
+      </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Produto</th>
+      <th>Quantidade</th>
+    </tr>
+  </thead>
+  <tbody id="items">
+    <%= render :partial => "item", :collection => @pedido.itempedidos %>
+  </tbody>
+</table>
+
+      <br><%= f.submit "Salvar" %><br><br>
 
      <%= link_to 'Voltar', pedidos_path %>
     <% end %>

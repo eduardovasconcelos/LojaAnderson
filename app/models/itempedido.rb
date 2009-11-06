@@ -42,9 +42,6 @@ class Itempedido < ActiveRecord::Base
      end
    end
 
-
-
-
   def should_destroy?
     should_destroy.to_i == 1
   end
@@ -69,9 +66,6 @@ class Itempedido < ActiveRecord::Base
    self.update_attribute(:valor_item, new_valor_item)
   end
 
-  def before_validation_on_create
-  end
 
 end
-
 

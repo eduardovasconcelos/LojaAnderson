@@ -86,4 +86,13 @@ class PedidosController < ApplicationController
        
   end
 
+  def adicionar_item
+    pedido = Pedido.find_by_id(params[:id])
+    pedido.adicionar_item(parameters.slice(:produto_id, :quantidade))
+  end
+
+  def remover_item
+
+  end
+
  end
