@@ -15,32 +15,32 @@ class Itempedido < ActiveRecord::Base
   #Salvando o valor atual do produto
   after_create :cadastra_valor, :soma_valor, :debita_estoque
 
-   def produto_nome
-     produto.nome if produto
-   end
+  def produto_nome
+    produto.nome if produto
+  end
 
-   def produto_nome=(nome)
-     self.produto = Produto.find_by_nome(nome) unless nome.blank?
-   end
+  def produto_nome=(nome)
+    self.produto = Produto.find_by_nome(nome) unless nome.blank?
+  end
 
-   def grava_itempedido
-     busca = Pessoa.find(:first, :conditions => ['nome = ?', @nome, @mae, @data_nascimento])
-     if busca.nil?
-       p = Pessoa.new
-       p.email = @email_pessoa
-       p.nis = @nis
-       p.save
+  def grava_itempedido
+    busca = Pessoa.find(:first, :conditions => ['nome = ?', @nome, @mae, @data_nascimento])
+    if busca.nil?
+      p = Pessoa.new
+      p.email = @email_pessoa
+      p.nis = @nis
+      p.save
       self.pessoa_id = p.id
       @pessoa_id = p.id
       save_telefones
-     else
-       busca.update_attributes(
-       :nome => @nome,
-       :email => @email,
-       :nis => @nis )
-       save_telefones
-     end
-   end
+    else
+      busca.update_attributes(
+        :nome => @nome,
+        :email => @email,
+        :nis => @nis )
+      save_telefones
+    end
+  end
 
   def should_destroy?
     should_destroy.to_i == 1
@@ -48,7 +48,7 @@ class Itempedido < ActiveRecord::Base
   
   #Passando o valor total do item no pedido. => valor_item => quantidade * valor_unitario
   def soma_valor
-     self.update_attributes(:valor_item => (self.quantidade * self.valor))
+    self.update_attributes(:valor_item => (self.quantidade * self.valor))
   end
 
   #Debita no estoque a quantidade pedida
@@ -57,15 +57,12 @@ class Itempedido < ActiveRecord::Base
   end
 
   def cadastra_valor
-     self.update_attributes(:valor => produto.valor)
+    self.update_attributes(:valor => produto.valor)
   end
 
   def after_validation_on_update
-   self.update_attribute(:valor, produto.valor)
-   new_valor_item = (self.valor * self.quantidade)
-   self.update_attribute(:valor_item, new_valor_item)
+    self.update_attribute(:valor, produto.valor)
+    new_valor_item = (self.valor * self.quantidade)
+    self.update_attribute(:valor_item, new_valor_item)
   end
-
-
 end
-
