@@ -1,0 +1,42 @@
+<h1>Dados do Cliente</h1>
+<p>
+  <b>Cliente:</b>
+  <%=h @pedido.cliente.nome %>
+</p>
+<p>
+  <b>Endereco do Cliente:</b>
+  <%=h @pedido.cliente.endereco %>
+</p>
+
+<h1>Datas do Pedido</h1>
+<p>
+  <b>Data do Pedido:</b>
+  <%=h @pedido.data_pedido.strftime("%d/%m/%Y") %>
+</p>
+<p>
+  <b>Data da Entrega:</b>
+  <%=h @pedido.data_entrega.strftime("%d/%m/%Y") %>
+</p>
+<p>
+<h2>Produtos</h2>
+<p>
+  <span>
+    <%= label_tag "produto", "Produto" %>
+    <%= text_field_with_auto_complete :produto, :nome%>
+    <%= label_tag "quantidade", "Quantidade" %>
+    <%= text_field_tag "quantidade"%>
+    <%= novo_item_link()%>
+  </span>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Produto</th>
+      <th>Quantidade</th>
+    </tr>
+  </thead>
+  <tbody id="items">
+    <%= render :partial => "item", :collection => @pedido.itempedidos %>
+  </tbody>
+</table>

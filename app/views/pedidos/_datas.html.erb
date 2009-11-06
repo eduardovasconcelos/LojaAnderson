@@ -1,0 +1,9 @@
+<p>
+  <%= f.label "data_do_pedido", "Data do pedido:"%><br />
+  <%= f.date_select 'data_pedido', :order=> [:day, :month, :year] %>
+</p>
+
+<p>
+  <%= f.label "data_de_entrega","Data da Entrega:" %><br />
+  <%= f.date_select 'data_entrega', :order=> [:day, :month, :year] %>
+</p>
