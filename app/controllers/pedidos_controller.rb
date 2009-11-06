@@ -44,10 +44,14 @@ class PedidosController < ApplicationController
     @pedido.user = session_user.nome
     if @pedido.save
         flash[:notice] = 'Pedido cadastrado com sucesso.'
-        redirect_to @pedido
+        redirect_to :action => "editar_itens", :id => @pedido.id
     else
         render :action => "new"       
     end
+  end
+
+  def editar_itens
+    @pedido = Pedido.find(params[:id])
   end
 
   # Função de fazer a edição dos pedidos.
@@ -86,6 +90,15 @@ class PedidosController < ApplicationController
        
   end
 
+    #Action para realizar o auto_complete no nome do produto na view dos pedidos
+  def auto_complete_for_produto_nome()
+      @produtos = Produto.find(:all,
+          :conditions => ['UPPER(nome) like ?',
+                      "#{params[:produto][:nome]}%"]);
+       render :inline => "<%=auto_complete_result(@produtos,'nome') %>"
+
+  end
+  
   def adicionar_item
     pedido = Pedido.find_by_id(params[:id])
     pedido.adicionar_item(parameters.slice(:produto_id, :quantidade))

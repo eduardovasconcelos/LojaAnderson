@@ -22,7 +22,7 @@
 <p>
   <span>
     <%= label_tag "produto", "Produto" %>
-    <%= text_field_with_auto_complete :produto, :nome%>
+    <%= text_field_with_auto_complete :produto, :nome, :after_update_element => "function(a, b){alert()}"%>
     <%= label_tag "quantidade", "Quantidade" %>
     <%= text_field_tag "quantidade"%>
     <%= novo_item_link()%>

@@ -24,7 +24,7 @@
          <%= link_to "Incluir Pedido", :controller => "pedidos", :action => "new", :cliente_id => cliente.id %>
          <%= link_to 'Editar', edit_cliente_path(cliente) %>
          <%= link_to 'Apagar', cliente, :confirm => 'Voce tem certeza?', :method => :delete %>
-         <%= link_to 'Grafico', {:action=>'view_pedido_chart', :id => cliente.id} %></td>
+         <%= link_to 'Relatório', {:action=>'view_pedido_chart', :id => cliente.id} %></td>
       </tr>
     <% end %>
     </table>

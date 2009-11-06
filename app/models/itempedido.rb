@@ -23,25 +23,6 @@ class Itempedido < ActiveRecord::Base
     self.produto = Produto.find_by_nome(nome) unless nome.blank?
   end
 
-  def grava_itempedido
-    busca = Pessoa.find(:first, :conditions => ['nome = ?', @nome, @mae, @data_nascimento])
-    if busca.nil?
-      p = Pessoa.new
-      p.email = @email_pessoa
-      p.nis = @nis
-      p.save
-      self.pessoa_id = p.id
-      @pessoa_id = p.id
-      save_telefones
-    else
-      busca.update_attributes(
-        :nome => @nome,
-        :email => @email,
-        :nis => @nis )
-      save_telefones
-    end
-  end
-
   def should_destroy?
     should_destroy.to_i == 1
   end
