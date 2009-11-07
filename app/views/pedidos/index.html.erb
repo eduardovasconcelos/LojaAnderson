@@ -1,12 +1,12 @@
 <h1>PEDIDOS</h1><br>
-  <div id="search">
-    NUMERO DO PEDIDO DO CLIENTE<%= search(url_for(:controller => "pedidos", :action => "search")) %>
-  </div>
+<div id="search">
+  NUMERO DO PEDIDO DO CLIENTE<%= search(url_for(:controller => "pedidos", :action => "search")) %>
+</div>
 
-  <div id="pedidos">
-    <%= render :partial => "pedidos" %>
-  </div>
+<div id="pedidos">
+  <%= render :partial => "pedidos" %>
+</div>
 <%= will_paginate @pedidos, :prev_label => "{ Anterior", :next_label => "Próximo }" %><br>
 <span id="tabelas"<%= link_to "  RELATÓRIO DOS PEDIDOS", pedidos_path(@pedidos, :format => 'pdf') %></span>
 <span id=menu_new><%= link_to image_tag("adobe.gif"), pedidos_path(@pedidos, :format => 'pdf') %></span>
- <br><br>
+<br><br>

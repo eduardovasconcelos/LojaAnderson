@@ -1,36 +1,45 @@
 <% if session_user.admin? %>
-    <h1>Editando pedido</h1>
-    <div id="tabelas">
-        <% form_for :pedido, :url => pedido_path(@pedido), :html => {:method => 'put'} do |f| %>
-          <%= f.error_messages %>
-       <%= render :partial => "cliente", :locals => {:f => f} %>
-          <%= render :partial => "datas", :locals => {:f => f} %>
-      <h2>Produtos</h2>
-      <p>
-        <span><%= label_tag "produto", "Produto" %>
+  <h1>Editando pedido</h1>
+  <div id="tabelas">
+    <% form_for :pedido, :url => pedido_path(@pedido), :html => {:method => 'put'} do |f| %>
+      <%= f.error_messages %>
+      <%= render :partial => "cliente", :locals => {:f => f} %>
+      <%= render :partial => "datas", :locals => {:f => f} %>
+
+      <%= submit_tag "Salvar" %>
+    <% end %>
+
+    <h2>Produtos</h2>
+    <p>
+      <% form_remote_tag :url => {:action => 'adicionar_item'} ,:update => "items" do -%>
+        <%= hidden_field_tag "id", @pedido.id%>
+        <%= label_tag "produto", "Produto" %>
         <%= text_field_with_auto_complete :produto, :nome%>
         <%= label_tag "quantidade", "Quantidade" %>
         <%= text_field_tag "quantidade"%>
-        <%= novo_item_link() %>
-        </span>
-      </p>
-      <table>
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th>Quantidade</th>
-          </tr>
-        </thead>
-        <tbody id="items">
-          <%= render :partial => "item", :collection => @pedido.itempedidos %>
-        </tbody>
-      </table>
-          <br><br><%= submit_tag "Update" %>
-        <% end %>
+        <%= submit_tag "Adicionar" %>
+      <% end -%>
+    </p>
 
-        <%= link_to 'Mostrar', @pedido %> |
-        <%= link_to 'Voltar', pedidos_path %><br><br>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
+
+      <tbody id="items">
+        <%= render :partial => "item", :collection => @pedido.itempedidos %>
+      </tbody>
+    </table>
+
+    <br/><br/>
+    <p>
+      <%= link_to 'Mostrar', @pedido %> |
+      <%= link_to 'Voltar', pedidos_path %><br><br>
+    </p>
+  </div>
 <% else %>
-    <%= render :partial => "shared/access_denied" %>
+  <%= render :partial => "shared/access_denied" %>
 <% end %>

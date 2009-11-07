@@ -53,8 +53,14 @@ class Pedido < ActiveRecord::Base
     return self.valor_total
   end
 
+  def self.remover_item(item_id)
+    item_pedido = Itempedido.find(item_id)
+    pedido = item_pedido.pedido
+    item_pedido.destroy
+    pedido.reload
+  end
+
   def adicionar_item(parameters)
     self.itempedidos.create(parameters)
   end
-
 end

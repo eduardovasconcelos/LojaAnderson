@@ -17,8 +17,8 @@ class PedidosController < ApplicationController
   def show_itens
     find(:all,
       :conditions => ["pedidos.id like :pattern",
-      {:pattern => "%#{itens}%"}
-    ])
+        {:pattern => "%#{itens}%"}
+      ])
     render :action => "show"
   end
 
@@ -43,10 +43,10 @@ class PedidosController < ApplicationController
     @pedido = Pedido.new(params[:pedido])
     @pedido.user = session_user.nome
     if @pedido.save
-        flash[:notice] = 'Pedido cadastrado com sucesso.'
-        redirect_to :action => "editar_itens", :id => @pedido.id
+      flash[:notice] = 'Pedido cadastrado com sucesso.'
+      redirect_to :action => "editar_itens", :id => @pedido.id
     else
-        render :action => "new"       
+      render :action => "new"
     end
   end
 
@@ -61,12 +61,12 @@ class PedidosController < ApplicationController
     if !cliente.nil?
       @pedido.cliente_id = cliente.id
     end
-      if @pedido.update_attributes(params[:pedido])
-        flash[:notice] = 'Pedido foi atualizado com sucesso.'
-        redirect_to(@pedido)
-      else
-        render :action => "edit"
-      end
+    if @pedido.update_attributes(params[:pedido])
+      flash[:notice] = 'Pedido foi atualizado com sucesso.'
+      redirect_to(@pedido)
+    else
+      render :action => "edit"
+    end
   end
 
   # Função de fazer a deleção dos pedidos
@@ -83,29 +83,35 @@ class PedidosController < ApplicationController
 
   #Action para realizar o auto_complete no nome do cliente na view dos pedidos
   def auto_complete_for_cliente_nome()
-      @clientes = Cliente.find(:all,
-          :conditions => ['UPPER(nome) like ?',
-                      "#{params[:cliente][:nome]}%"]);
-       render :inline => "<%=auto_complete_result(@clientes,'nome') %>"
+    @clientes = Cliente.find(:all,
+      :conditions => ['UPPER(nome) like ?',
+        "#{params[:cliente][:nome]}%"]);
+    render :inline => "<%=auto_complete_result(@clientes,'nome') %>"
        
   end
 
-    #Action para realizar o auto_complete no nome do produto na view dos pedidos
+  #Action para realizar o auto_complete no nome do produto na view dos pedidos
   def auto_complete_for_produto_nome()
-      @produtos = Produto.find(:all,
-          :conditions => ['UPPER(nome) like ?',
-                      "#{params[:produto][:nome]}%"]);
-       render :inline => "<%=auto_complete_result(@produtos,'nome') %>"
-
+    @produtos = Produto.find(:all,
+      :conditions => ['UPPER(nome) like ?',
+        "#{params[:produto][:nome]}%"]);
+    render :inline => "<%=auto_complete_result(@produtos,'nome') %>"
   end
   
   def adicionar_item
     pedido = Pedido.find_by_id(params[:id])
-    pedido.adicionar_item(parameters.slice(:produto_id, :quantidade))
+    if params[:produto].present? && params[:produto][:nome].present?
+      produto = Produto.find_by_nome(params[:produto][:nome])
+      if produto.present?
+        pedido.adicionar_item(:produto_id => produto.id, :quantidade=> params[:quantidade])
+        pedido.reload
+      end
+    end
+    render :partial => "item", :collection => pedido.itempedidos
   end
 
   def remover_item
-
+    pedido = Pedido.remover_item(params[:id])
+    render :partial => "item", :collection => pedido.itempedidos
   end
-
- end
+end

@@ -18,15 +18,17 @@
   <%=h @pedido.data_entrega.strftime("%d/%m/%Y") %>
 </p>
 <p>
+
 <h2>Produtos</h2>
 <p>
-  <span>
+  <% form_remote_tag :url => {:action => 'adicionar_item'} ,:update => "items" do -%>
+    <%= hidden_field_tag "id", @pedido.id%>
     <%= label_tag "produto", "Produto" %>
-    <%= text_field_with_auto_complete :produto, :nome, :after_update_element => "function(a, b){alert()}"%>
+    <%= text_field_with_auto_complete :produto, :nome%>
     <%= label_tag "quantidade", "Quantidade" %>
     <%= text_field_tag "quantidade"%>
-    <%= novo_item_link()%>
-  </span>
+    <%= submit_tag "Adicionar" %>
+  <% end -%>
 </p>
 
 <table>
@@ -36,7 +38,13 @@
       <th>Quantidade</th>
     </tr>
   </thead>
+
   <tbody id="items">
     <%= render :partial => "item", :collection => @pedido.itempedidos %>
   </tbody>
 </table>
+
+<p>
+  <%= link_to 'Visualizar pedido atual', @pedido %>
+  <%= link_to 'Lista de pedidos', pedidos_path %>
+</p>
