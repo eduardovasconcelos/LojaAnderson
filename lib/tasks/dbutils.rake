@@ -5,10 +5,10 @@ namespace :db do
       config = load_config
       assert_adapter("mysql", config)
       formatted_time = ENV['DUMP_TIMESTAMP'] || Time.now.strftime("%Y%m%d%H%M")
-      file_name = "dump_#{config['database']}_#{formatted_time}.sql.bz2"
+      file_name = "dump_#{config['database']}_#{formatted_time}.sql"
       dump_dir = ENV['DUMP_DIR'] || "#{ENV['HOME']}/tmp"
       mkdir_p dump_dir
-      cmd = "mysqldump -u #{config['username']} --password=#{config['password']} #{config['database']} | bzip2 -9c > #{File.join(dump_dir, file_name)}"
+      cmd = "mysqldump -u #{config['username']} --password=#{config['password']} #{config['database']} > #{File.join(dump_dir, file_name)}"
 
       puts "Starting #{cmd}"
       sh cmd
@@ -20,7 +20,7 @@ namespace :db do
       config = load_config
       assert_adapter("mysql", config)
       assert_file_on_environment("db:utils:import_dump", config)
-      cmd = "bzcat #{ENV['FILE']} |  mysql -u #{config['username']} --password=#{config['password']} #{config['database']}"
+      cmd = "cat #{ENV['FILE']} |  mysql -u #{config['username']} --password=#{config['password']} #{config['database']}"
 
       puts "Starting #{cmd}"
       sh cmd
