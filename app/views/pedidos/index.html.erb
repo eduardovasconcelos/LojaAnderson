@@ -6,7 +6,7 @@
 <div id="pedidos">
   <%= render :partial => "pedidos" %>
 </div>
-<%= will_paginate @pedidos, :prev_label => "{ Anterior", :next_label => "Próximo }" %><br>
+<%= will_paginate @pedidos %><br>
 <span id="tabelas"<%= link_to "  RELATÓRIO DOS PEDIDOS", pedidos_path(@pedidos, :format => 'pdf') %></span>
 <span id=menu_new><%= link_to image_tag("adobe.gif"), pedidos_path(@pedidos, :format => 'pdf') %></span>
 <br><br>

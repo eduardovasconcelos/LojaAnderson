@@ -1,31 +1,39 @@
 # Be sure to restart your server when you modify this file
 
-# Uncomment below to force Rails into production mode when
-# you don't control web/app server and can't set it the proper way
-# ENV['RAILS_ENV'] ||= 'production'
-
-
+# Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 
-
+# Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
+
 Rails::Initializer.run do |config|
-
-  config.action_controller.session = { 
+  config.action_controller.session = {
     :session_key => '32b53526325dc08aecaca619c2f9d0ff',
-    :secret => 'eduardooliveiravasconcelos23021982' }
+    :secret => 'eduardooliveiravasconcelos23021982'
+  }
 
+  # Settings in config/environments/* take precedence over those specified here.
+  # Application configuration should go into files in config/initializers
+  # -- all .rb files in that directory are automatically loaded.
 
+  # Add additional load paths for your own custom dirs
+  # config.load_paths += %W( #{RAILS_ROOT}/extras )
+
+  # Specify gems that this application depends on and have them installed with rake gems:install
+  config.gem "will_paginate", :source => "http://gemcutter.org/"
+
+  # Skip frameworks you're not going to use. To use Rails without a database,
+  # you must remove the Active Record framework.
+  # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
+
+  # Activate observers that should always be running
+  # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+
+  # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
+  # Run "rake -D time" for a list of tasks for finding time zone names.
+  config.time_zone = 'UTC'
+
+  # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
+  # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
+   config.i18n.default_locale = :pt_BR
 end
-require 'will_paginate'
-
-
-
-#ActionMailer::Base.server_settings =
- #{
-  #  :address => "mail.gmail.com",
-   # :domain => "gmail.com",
-    #:user_name => "eduardooliveiravasconcelos@gmail.com",
- #   :password => "h4ck3d02",
-  #  :authentication => :login
- #}
