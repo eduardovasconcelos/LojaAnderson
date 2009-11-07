@@ -5,7 +5,7 @@ class LoginController < ApplicationController
   #Action responsável por efetuar e controlar o login no sistema
   def login
     if request.post?
-      @user = User.find_by_login_and_pass(params[:login], params[:password])
+      @user = User.login(params[:login], params[:password])
       if @user
         session[:user] = @user.id
         if session[:return_to] && !session[:return_to].include?(url_for(:action => "login"))
@@ -24,5 +24,4 @@ class LoginController < ApplicationController
   def logout
      session[:user] = nil
   end
-
 end
