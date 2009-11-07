@@ -21,11 +21,12 @@
       <% end -%>
     </p>
 
-    <table>
+    <table border="1" cellpadding="5" cellspacing="1">
       <thead>
         <tr>
           <th>Produto</th>
           <th>Quantidade</th>
+          <th>Ação</th>
         </tr>
       </thead>
 
@@ -36,7 +37,7 @@
 
     <br/><br/>
     <p>
-      <%= link_to 'Mostrar', @pedido %> |
+      <%= link_to 'Finalizar', @pedido %> |
       <%= link_to 'Voltar', pedidos_path %><br><br>
     </p>
   </div>
