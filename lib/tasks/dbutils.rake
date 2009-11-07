@@ -36,7 +36,6 @@ namespace :db do
         "db:drop",
         "db:create",
         "db:utils:import_dump",
-        "thinking_sphinx:bootstrap"
       ].each do |task|
         puts "Invoking #{task}"
         Rake::Task[task].invoke
