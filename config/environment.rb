@@ -21,6 +21,7 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem "will_paginate", :source => "http://gemcutter.org/"
+  config.gem "brazilian-rails", :source => "http://gemcutter.org"
 
   # Skip frameworks you're not going to use. To use Rails without a database,
   # you must remove the Active Record framework.
