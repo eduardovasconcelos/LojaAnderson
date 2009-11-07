@@ -6,7 +6,7 @@
       <%= render :partial => "cliente", :locals => {:f => f} %>
       <%= render :partial => "datas", :locals => {:f => f} %>
 
-      <%= submit_tag "Salvar" %>
+      <%= submit_tag "Salvar Pedido" %>
     <% end %>
 
     <h2>Produtos</h2>
@@ -37,7 +37,6 @@
 
     <br/><br/>
     <p>
-      <%= link_to 'Finalizar', @pedido %> |
       <%= link_to 'Voltar', pedidos_path %><br><br>
     </p>
   </div>

@@ -22,17 +22,6 @@ class Pedido < ActiveRecord::Base
   end
 
 
-  def item_attributes=(item_attributes)
-    item_attributes.each do |attributes|
-      if attributes[:id].blank?
-        itempedidos.build(attributes)
-      else
-        item = itempedidos.detect { |t| t.id == attributes[:id].to_i  }
-        item.attributes = attributes
-      end
-    end
-  end
-
   def save_itempedidos
     itempedidos.each do |item|
       if item.should_destroy?
