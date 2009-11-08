@@ -16,9 +16,22 @@
         <tr>
           <th>Produto</th>
           <th>Quantidade</th>
+          <th>Unitário</th>
+          <th>Preço</th>
           <th>Ação</th>
         </tr>
       </thead>
+      <tfoot>
+        
+        <tr>
+          <td><b>VALOR TOTAL</b></td>
+          <td></td>
+          <td></td>
+          <td><b><%= @pedido.calcular_total %></b></td>
+        </tr>
+
+      </tfoot>
+
 
       <tbody id="items">
         <%= render :partial => "item", :collection => @pedido.itempedidos %>
