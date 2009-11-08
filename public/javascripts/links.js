@@ -14,13 +14,13 @@ var bc=0xcfdfe4;
 if(typeof(frames)=="undefined"){var frames=0;}
 
 startMainMenu("",0,0,2,0,0)
-mainMenuItem("links_b1",".gif",22,102,"javascript:;","","Clientes",2,2,"links_plain");
-mainMenuItem("links_b2",".gif",22,102,"javascript:;","","Pedidos",2,2,"links_plain");
-mainMenuItem("links_b3",".gif",22,102,"javascript:;","","Produtos",2,2,"links_plain");
-mainMenuItem("links_b4",".gif",22,102,"javascript:;","","Contabilidade",2,2,"links_plain");
-mainMenuItem("links_b5",".gif",22,102,"javascript:;","","Users",2,2,"links_plain");
-mainMenuItem("links_b6",".gif",22,102,"javascript:;","","Login",2,2,"links_plain");
-mainMenuItem("links_b7",".gif",22,102,"javascript:;","","Logout",2,2,"links_plain");
+mainMenuItem("../images/links_b1",".gif",22,102,"javascript:;","","Clientes",2,2,"links_plain");
+mainMenuItem("../images/links_b2",".gif",22,102,"javascript:;","","Pedidos",2,2,"links_plain");
+mainMenuItem("../images/links_b3",".gif",22,102,"javascript:;","","Produtos",2,2,"links_plain");
+mainMenuItem("../images/links_b4",".gif",22,102,"javascript:;","","Contabilidade",2,2,"links_plain");
+mainMenuItem("../images/links_b5",".gif",22,102,"javascript:;","","Users",2,2,"links_plain");
+mainMenuItem("../images/links_b6",".gif",22,102,"javascript:;","","Login",2,2,"links_plain");
+mainMenuItem("../images/links_b7",".gif",22,102,"javascript:;","","Logout",2,2,"links_plain");
 endMainMenu("",0,0);
 
 startSubmenu("links_b1","links_menu",102);
