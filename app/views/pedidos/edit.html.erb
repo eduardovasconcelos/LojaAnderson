@@ -10,34 +10,24 @@
     <% end %>
 
     <%= render :partial => "itens_do_pedido" %>
+    <div id="tabelas_novas">
+      <table border="1" cellpadding="5" cellspacing="1">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Unitário</th>
+            <th>Preço</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody id="items">
+          <%= render :partial => "item", :collection => @pedido.itempedidos %>
+        </tbody>
+      </table>
 
-    <table border="1" cellpadding="5" cellspacing="1">
-      <thead>
-        <tr>
-          <th>Produto</th>
-          <th>Quantidade</th>
-          <th>Unitário</th>
-          <th>Preço</th>
-          <th>Ação</th>
-        </tr>
-      </thead>
-      <tfoot>
-        
-        <tr>
-          <td><b>VALOR TOTAL</b></td>
-          <td></td>
-          <td></td>
-          <td><b><%= @pedido.calcular_total %></b></td>
-        </tr>
-
-      </tfoot>
-
-
-      <tbody id="items">
-        <%= render :partial => "item", :collection => @pedido.itempedidos %>
-      </tbody>
-    </table>
-
+    </div><br />
+      <b>VALOR TOTAL: n<%= @pedido.calcular_total %></b>
     <br/><br/>
     <p>
       <%= link_to 'Voltar', pedidos_path %><br><br>

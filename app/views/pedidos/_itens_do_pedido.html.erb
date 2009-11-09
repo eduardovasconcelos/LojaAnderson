@@ -1,0 +1,12 @@
+
+<h2>Produtos</h2>
+<p>
+  <% form_remote_tag :url => {:action => 'adicionar_item'} ,:update => "items" do -%>
+    <%= hidden_field_tag "id", @pedido.id%>
+    <%= label_tag "produto", "Produto" %>
+    <%= text_field_with_auto_complete :produto, :nome%>
+    <%= label_tag "quantidade", "Quantidade" %>
+    <%= text_field_tag "quantidade"%>
+    <%= submit_tag "Adicionar" %>
+  <% end -%>
+</p>
