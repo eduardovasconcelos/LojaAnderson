@@ -1,58 +1,60 @@
 <% if flash[:notice] %>
   <p style="color: red; font-style: italic"><%= flash[:notice] %></p>
 <% end %>
-<h1>Dados do Cliente</h1>
-<p>
-  <b>Cliente:</b>
-  <%=h @pedido.cliente.nome %>
-</p>
-<p>
-  <b>Endereco do Cliente:</b>
-  <%=h @pedido.cliente.endereco %>
-</p>
-<p>
-  <b>Telefone:</b>
-  <%=h @pedido.cliente.telefone%>
-</p>
+<div id="tabelas">
+  <h1>Dados do Cliente</h1>
+  <p>
+    <b>Cliente:</b>
+    <%=h @pedido.cliente.nome %>
+  </p>
+  <p>
+    <b>Endereco do Cliente:</b>
+    <%=h @pedido.cliente.endereco %>
+  </p>
+  <p>
+    <b>Telefone:</b>
+    <%=h @pedido.cliente.telefone%>
+  </p>
 
-<h1>Datas do Pedido</h1>
-<p>
-  <b>Funcionário Responsável:</b>
-  <%= @pedido.user %>
-</p>
-<p>
-  <b>Data do Pedido:</b>
-  <%=h @pedido.data_pedido.strftime("%d/%m/%Y") %>
-</p>
-<p>
-  <b>Data da Entrega:</b>
-  <%=h @pedido.data_entrega.strftime("%d/%m/%Y") %>
-</p>
-<p>
-  <b>Endereço da Entrega:</b>
-  <%=h @pedido.cliente.end_cobranca %>
-</p>
-<h1 >Itens do Pedido</h1>
-<p id="tabelas_novas">
-<table border="1" cellpadding="5" cellspacing="1">
-  <thead>
-    <tr align="center">
-      <td><b>Nome</b></td>
-      <td><b>Quantidade</b></td>
-      <td><b>Unitário</b></td>
-      <td><b>Preço</b></td>
-    </tr>
-    
-  </thead>
-  <tbody>
-    <%= render :partial => "showitens", :collection => @pedido.itempedidos, :as => :item %>
-  </tbody>
-</table>
-<br><b>VALOR TOTAL: <%= @pedido.calcular_total %>  </b><br><br>
+  <h1>Datas do Pedido</h1>
+  <p>
+    <b>Funcionário Responsável:</b>
+    <%= @pedido.user %>
+  </p>
+  <p>
+    <b>Data do Pedido:</b>
+    <%=h @pedido.data_pedido.strftime("%d/%m/%Y") %>
+  </p>
+  <p>
+    <b>Data da Entrega:</b>
+    <%=h @pedido.data_entrega.strftime("%d/%m/%Y") %>
+  </p>
+  <p>
+    <b>Endereço da Entrega:</b>
+    <%=h @pedido.cliente.end_cobranca %>
+  </p>
+  <h1 >Itens do Pedido</h1>
+  <p id="tabelas_novas">
+  <table border="1" cellpadding="5" cellspacing="1">
+    <thead>
+      <tr align="center">
+        <td><b>Nome</b></td>
+        <td><b>Quantidade</b></td>
+        <td><b>Unitário</b></td>
+        <td><b>Preço</b></td>
+      </tr>
 
- <%= link_to "Imprimir Pedido", pedido_path(@pedido, :format => 'pdf') %> |
-<% if session_user.admin? %>
-  <%= link_to 'Editar', edit_pedido_path(@pedido) %> |
-<% end %>
-<%= link_to 'Voltar', pedidos_path %>
-</p>
+    </thead>
+    <tbody>
+      <%= render :partial => "showitens", :collection => @pedido.itempedidos, :as => :item %>
+    </tbody>
+  </table>
+  <br><b>VALOR TOTAL: R$ <%= @pedido.calcular_total %>  </b><br><br>
+
+  <%= link_to "Imprimir Pedido", pedido_path(@pedido, :format => 'pdf') %> |
+  <% if session_user.admin? %>
+    <%= link_to 'Editar', edit_pedido_path(@pedido) %> |
+  <% end %>
+  <%= link_to 'Voltar', pedidos_path %>
+  </p>
+</div>

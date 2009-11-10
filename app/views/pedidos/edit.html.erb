@@ -25,12 +25,9 @@
           <%= render :partial => "item", :collection => @pedido.itempedidos %>
         </tbody>
       </table>
-
-    </div><br />
-      <b>VALOR TOTAL: n<%= @pedido.calcular_total %></b>
-    <br/><br/>
+    </div>
     <p>
-      <%= link_to 'Voltar', pedidos_path %><br><br>
+      <%= link_to 'Voltar', @pedido %>
     </p>
   </div>
 <% else %>
