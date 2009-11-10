@@ -5,9 +5,9 @@ a:visited { color: #0985A1}
 a:hover { color: #0985A1 }
 
 body,ol, ul, td, span {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  text-indent: 8px;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size:   13px;
+    text-indent: 8pt;
 }
 #menu_new
 {
@@ -24,7 +24,7 @@ body,ol, ul, td, span {
 }
 #novos_campos
 {
-   
+
     background-color: white;
     text-indent: 8pt;
     margin-left: 10px;
@@ -32,7 +32,7 @@ body,ol, ul, td, span {
 
 #tabelas
 {
-   
+
     background-color: white;
     text-indent: 8pt;
     margin-left: 10px;
@@ -40,12 +40,12 @@ body,ol, ul, td, span {
 
 #menu_new a:hover
 {
-  color: white
+    color: white
 }
 
 #menu_new a
 {
-  color: white
+    color: white
 }
 
 #item
@@ -79,85 +79,98 @@ body,ol, ul, td, span {
 }
 #menu
 {
-  color: black;
-  padding: 10px;
+    color: black;
+    padding: 10px;
+}
+#content_teste
+{
+    border: 0px solid #fff;
+    color: white;
+    width: 95%;
+    padding: 20px;
+    text-align: left;
+    background-color: white;
+    border: 3px solid #fff;
+
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 20px;
 }
 #footer
 {
-   
+
     text-align: center;
     vertical-align: text-top;
 }
 pre
 {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
+    background-color: #eee;
+    padding: 10px;
+    font-size: 11px;
 }
 
 .fieldWithErrors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+    padding: 2px;
+    background-color: red;
+    display: table;
 }
 
 #errorExplanation {
-  width: 400px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  text-indent: 6px;
+    width: 400px;
+    border: 2px solid red;
+    padding: 7px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    text-indent: 6px;
 }
 
 #errorExplanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  background-color: #c00;
-  color: #fff;
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff;
 }
 
 #errorExplanation p {
-  color: #333;
-  margin-bottom: 0;
-  padding: 5px;
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px;
 }
 
 #errorExplanation ul li {
-  font-size: 12px;
-  list-style: square;
+    font-size: 12px;
+    list-style: square;
 }
 
 .links_menu {
-background-color:#A5D0E4;
-border:0 solid #000000;
-left:0;
-position:absolute;
-top:0;
-visibility:hidden;
+    background-color:#A5D0E4;
+    border:0 solid #000000;
+    left:0;
+    position:absolute;
+    top:0;
+    visibility:hidden;
 }
 a.links_plain:link, a.links_plain:visited {
-background-color:#A5D0E4;
-border:0 solid #000000;
-color:#000000;
-display:block;
-font-family:Arial,Helvetica,sans-serif;
-font-size:10pt;
-padding:2px 0;
-text-align:left;
-text-decoration:none;
+    background-color:#A5D0E4;
+    border:0 solid #000000;
+    color:#000000;
+    display:block;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:10pt;
+    padding:2px 0;
+    text-align:left;
+    text-decoration:none;
 }
 a.links_plain:hover, a.links_plain:active {
-background-color:#CFDFE4;
-border:0 solid #000000;
-color:#000000;
-display:block;
-font-family:Arial,Helvetica,sans-serif;
-font-size:10pt;
-padding:2px 0;
-text-decoration:none;
+    background-color:#CFDFE4;
+    border:0 solid #000000;
+    color:#000000;
+    display:block;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:10pt;
+    padding:2px 0;
+    text-decoration:none;
 }

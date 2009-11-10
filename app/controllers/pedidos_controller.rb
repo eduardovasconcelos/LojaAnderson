@@ -57,6 +57,7 @@ class PedidosController < ApplicationController
   # Função de fazer a edição dos pedidos.
   def update
     @pedido = Pedido.find(params[:id])
+    @pedido.user = session_user.nome
     cliente = Cliente.find_by_nome(params[:cliente][:nome])
     if !cliente.nil?
       @pedido.cliente_id = cliente.id
