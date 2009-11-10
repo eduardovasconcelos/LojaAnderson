@@ -1,7 +1,4 @@
-1 - Problemas com atualizacao do estoque, se deletar incluir a quantidade do produto deletado. Se editar se novo valor for maior retirar a diferenca no estoque, se não incluir a diferença no estoque.
-2 - Cadastro de produto que nao existe. Criei a action produto_existe?, Verificar o que está errado.
-3 - AutoComplete nos produtos (resolve o caso de produtos que nao existem?)
-4 - Exportar Software
-5 - Alocar o arquivo links.js, como fazer
-6 - Verificar se o produto tem quantidade no estoque
-7 - Problemas com a visualizacao em diferentes Browsers
+1 - Problemas com atualizacao do estoque, se deletar incluir a quantidade do produto deletado. Se editar se novo valor for maior retirar a diferenca no estoque, se nï¿½o incluir a diferenï¿½a no estoque.
+2 - Exportar Software
+3 - Alocar o arquivo links.js, como fazer
+4 - Verificar se o produto tem quantidade no estoque
